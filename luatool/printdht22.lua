@@ -16,7 +16,9 @@ dht22 = require("dht22")
 dht22.read(PIN)
 t = dht22.getTemperature()
 h = dht22.getHumidity()
-
+print(t)
+print(h)
+print("----")
 if h == nil then
   print("Error reading from DHT22")
 else

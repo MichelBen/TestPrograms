@@ -42,13 +42,13 @@ function M.read(pin)
   -- Step 2:  DHT22 send response signal 
   -- bus will always let up eventually, don't bother with timeout
   while (gpio_read(pin) == 0 ) do end
+
   local c=0
   while (gpio_read(pin) == 1 and c < 500) do c = c + 1 end
   -- bus will always let up eventually, don't bother with timeout
   while (gpio_read(pin) == 0 ) do end
   c=0
   while (gpio_read(pin) == 1 and c < 500) do c = c + 1 end
-  
   -- Step 3: DHT22 send data
   for j = 1, 40, 1 do
     while (gpio_read(pin) == 1 and bitlength < 10 ) do
@@ -59,7 +59,7 @@ function M.read(pin)
     -- bus will always let up eventually, don't bother with timeout
     while (gpio_read(pin) == 0) do end
   end
-  --[[
+  ---[[
   print("-- dump")
   for i = 1, 40, 1 do
 	print(i, bitStream[i])
