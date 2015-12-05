@@ -18,12 +18,30 @@ local function onConnectCb(str)
 		print("--- Receive End")
 	   end)
 	  
-	conn:connect(80,ipaddr)
+	-- 192.168.1.12
+	--conn:connect(8080,ipaddr)
+	conn:connect(8080,"192.168.1.12")
 	conn:send("GET /v1/bpi/currentprice.json HTTP/1.1\r\nHost: api.coindesk.com\r\nConnection: keep-alive\r\nAccept: */*\r\n\r\n")
 
 	print("- End Connect TCP")
+	
  
 end   --local function onConnectCb(str)
+
+gpio.mode(0,gpio.OUTPUT)
+tmr.delay(500000)
+gpio.write(0,gpio.LOW)
+tmr.delay(500000)
+gpio.write(0,gpio.HIGH)
+tmr.delay(500000)
+gpio.write(0,gpio.LOW)
+tmr.delay(500000)
+gpio.write(0,gpio.HIGH)
+tmr.delay(500000)
+gpio.write(0,gpio.LOW)
+tmr.delay(500000)
+gpio.write(0,gpio.HIGH)
+tmr.delay(500000)
     
 wifi.setmode(wifi.STATION)
 wifi.sta.config("mbfree","martineestlaplusbelle")
@@ -38,6 +56,7 @@ tmr.alarm(1, 1000, 1, function()
 	 print("-The module MAC address is: " .. wifi.ap.getmac())
 	 print("-Config done, IP is "..wifi.sta.getip())
 	 onConnectCb("1")
+    node.dsleep(1000000, 1)
   end
 end)
 

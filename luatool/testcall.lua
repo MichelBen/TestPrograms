@@ -1,0 +1,8 @@
+print("testcall Start")
+ret_error_code, ret_error_msg, temp, hum = dofile("DHTv2.lua")
+print("testcall print")
+print(ret_error_code)
+print(ret_error_msg)
+print(temp)
+print(hum)
+print("testcall End")
